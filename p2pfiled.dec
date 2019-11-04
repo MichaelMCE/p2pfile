@@ -1,0 +1,40 @@
+
+
+
+
+$$FILE_DEFAULTAUTH	  = "none"	' default password if none supplied (listen mode only)
+$$FILE_DEFAULTPORT	  = 28010	' default transfer port to bind if none supplied
+$$FILE_SEND			  = 1		' incomming transfer mode
+$$FILE_GET			  = 2		' incomming transfer mode
+$$MAX_FBUFFER		  = 1048576	' set default block size per transfer (also sets memory allocation blk size) excluding last block
+$$timeToAuth		  = 3000	' auth must occur within this time period
+
+PACKED TCRC
+	ULONG			.filepos	' read or write to file at this offset
+	ULONG			.size		' size of data to read/write(size of following block)
+	ULONG			.usize		' uncompressed data size, used for allocating buffers. only valid if compression flag set
+'	UBYTE			.flags		' crc data, encryption and compression flags
+	XLONG			.crc32		' 32bit crc of data before compression and encryption. only valid if crc flag set
+END TYPE
+
+$$FILE_CRC			= 0x01
+$$FILE_ENCRYPT		= 0x02
+$$FILE_COMPRESS		= 0x04
+$$FILE_IDENT		= "Rea"
+
+PACKED TFILE
+	STRING * 3		.ident		' should always contain $$FILE_IDENT
+	ULONG			.auth
+	STRING * 255	.srcfile	' source filename
+	STRING * 255	.desfile	' destination filename
+	XLONG			.fileid		' handle to file
+	XLONG			.start		' begin read/write file at this offset
+	XLONG			.end		' end read/write file at this offset
+	XLONG			.size		' total data to read/write/send/get
+	XLONG			.wmode		' write mode (file access write flags)
+	XLONG			.blocks		' number of bytes per block 
+	UBYTE			.fmode		' transfer type ($$FILE_SEND/GET)
+	UBYTE			.flags		' crc data, encryption and compression flaqs
+	UBYTE			.error		' 0 = no error,1 = unable to open file or file does not exist
+END TYPE
+
