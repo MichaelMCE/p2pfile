@@ -1,6 +1,6 @@
 		p2pfile v3.01
 
-An example of multipart Peer To Peer file transfers over TCP/IP, supporting both encryption and compression.
+Multipart Peer To Peer file transfers over TCP/IP, supporting both encryption and compression.
 P2Pfile may act as either the server or the send/get client.
 	
 To enable server:
