@@ -41,7 +41,6 @@ Authenticating password is never transmitted.
 	
 
 by Michael McElligott
-Mapei_@hotmail.com
 4'th of June 2006
 
 

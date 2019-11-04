@@ -1,4 +1,3 @@
-		p2pfile v3.01
 
 Multipart Peer To Peer file transfers over TCP/IP, supporting both encryption and compression.
 P2Pfile may act as either the server or the send/get client.
@@ -42,6 +41,7 @@ Authenticating password is never transmitted.
 	
 
 by Michael McElligott
+Mapei_@hotmail.com
 4'th of June 2006
 
 
